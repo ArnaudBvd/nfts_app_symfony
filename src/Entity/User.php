@@ -33,6 +33,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
+    public function hasRoles($role)
+    {
+        $return = false;
+
+        foreach ($this->roles as $roleParcours){
+            if($role == $roleParcours){
+                $return = true;
+            }
+        }
+        return $return;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

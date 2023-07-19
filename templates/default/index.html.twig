@@ -24,6 +24,12 @@
 		<div>
 			{% if app.user %}
 				<a href="{{path ('app_logout')}}">Me déconnecter</a>
+
+				{% if app.user.hasRoles('ROLE_ADMIN') %}
+					<div>TU ES ADMIN !</div>
+				{% endif %}
+
+				<div>{{app.user.firstname}} - {{app.user.lastname}}</div>
 			{% endif %}
 
 			{% if app.user is null %}
