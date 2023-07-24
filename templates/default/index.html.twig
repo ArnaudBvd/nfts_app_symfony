@@ -21,21 +21,7 @@
 		<h1>Hello
 			{{ controller_name }}! ✅</h1>
 
-		<div>
-			{% if app.user %}
-				<a href="{{path ('app_logout')}}">Me déconnecter</a>
-
-				{% if app.user.hasRoles('ROLE_ADMIN') %}
-					<div>TU ES ADMIN !</div>
-				{% endif %}
-
-				<div>{{app.user.firstname}} - {{app.user.lastname}}</div>
-			{% endif %}
-
-			{% if app.user is null %}
-				<a href="{{path ('app_login')}}">Me Connecter</a>
-			{% endif %}
-		</div>
+		
 
 		This friendly message is coming from:
 		<ul>
