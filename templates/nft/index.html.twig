@@ -7,7 +7,7 @@
 	<style>
 		.example-wrapper {
 			margin: 1em auto;
-			max-width: 800px;
+			max-width: 1400px;
 			width: 95%;
 			font: 18px / 1.5 sans-serif;
 		}
@@ -17,13 +17,13 @@
 		}
 	</style>
 
-	<div class="example-wrapper">
+	<div class="container">
 		<h1 class="my-5 text-center">Les NFTs que j'ai ajouté ! ✅</h1>
 
 		<div class="row">
 			{% for nft in app.user.nfts %}
-				<div class="card mx-3" style="width: 18rem;">
-					<img src="{{asset ('/uploads/nft/' ~ nft.image)}}" class="card-img-top" alt="{{nft.nom}}">
+				<div class="card mx-3" style="width: 24rem;">
+					<img src="{{asset ('/uploads/nft/' ~ nft.image)}}" height="450" class="card-img-top" alt="{{nft.nom}}">
 					<div class="card-body">
 						<h5 class="card-title">{{nft.nom}}</h5>
 						<ul>
