@@ -1,20 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NftController!{% endblock %}
+{% block title %}Hello NftController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<div class="example-wrapper">
+		<h1 class="my-5 text-center">Les NFTs que j'ai ajouté ! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/nfts_app_symfony/src/Controller/NftController.php'|file_link(0) }}">src/Controller/NftController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/nfts_app_symfony/templates/nft/index.html.twig'|file_link(0) }}">templates/nft/index.html.twig</a></code></li>
-    </ul>
-</div>
+		<div class="row">
+			{% for nft in app.user.nfts %}
+				<div class="card mx-3" style="width: 18rem;">
+					<img src="{{asset ('/uploads/nft/' ~ nft.image)}}" class="card-img-top" alt="{{nft.nom}}">
+					<div class="card-body">
+						<h5 class="card-title">{{nft.nom}}</h5>
+						<ul>
+							<li>Nombre de quantité disponible :
+								{{nft.quantity}}</li>
+							<li>Valeur :
+								{{nft.valeur}}
+								ETH</li>
+						</ul>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		<ul>
+			<li>Your controller at
+				<code>
+					<a href="{{ 'C:/wamp64/www/nfts_app_symfony/src/Controller/NftController.php'|file_link(0) }}">src/Controller/NftController.php</a>
+				</code>
+			</li>
+			<li>Your template at
+				<code>
+					<a href="{{ 'C:/wamp64/www/nfts_app_symfony/templates/nft/index.html.twig'|file_link(0) }}">templates/nft/index.html.twig</a>
+				</code>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

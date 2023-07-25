@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'userAdd', targetEntity: Nft::class)]
     private Collection $nfts;
-
+    
     public function __construct()
     {
         $this->nfts = new ArrayCollection();
