@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Nft;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -18,6 +20,12 @@ class NftType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class)
+
+            ->add('category', EntityType::class, [
+                "class" => Category::class,
+                "label" => "Catégorie"
+                ])
+
             ->add('image', FileType::class, [
                 'mapped' => false,
                 'required' => false,

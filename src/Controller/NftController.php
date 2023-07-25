@@ -19,7 +19,7 @@ class NftController extends AbstractController
     #[Route('/nft', name: 'app_nft')]
     public function index(): Response
     {
-        return $this->render('nft/index.html.twig', [
+        return $this->render('nft/allnfts.html.twig', [
             'controller_name' => 'NftController',
         ]);
     }
