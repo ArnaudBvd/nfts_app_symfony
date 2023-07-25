@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\NftRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: NftRepository::class)]
 class Nft
@@ -17,12 +19,23 @@ class Nft
     private ?string $image = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Veuillez saisir le nom")]
     private ?string $nom = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Veuillez saisir la quantité disponible")]
+    #[Assert\Type(
+        type: 'float',
+        message: 'La quantité {{value}} n\'est pas un {{float}}'
+    )]
     private ?float $valeur = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Veuillez saisir la quantité disponible")]
+    #[Assert\Type(
+        type: 'integer',
+        message: 'La quantité {{value}} n\'est pas un {{type}}'
+    )]
     private ?int $quantity = null;
 
     #[ORM\ManyToOne(inversedBy: 'nfts')]
