@@ -18,12 +18,16 @@
 	</style>
 
 	<div class="container">
-		<h1 class="my-5 text-center">Les NFTs que j'ai ajouté ! ✅</h1>
+		<h1 class="my-5 text-center">Mes NFTs</h1>
+
+		<p class="fs-4 text-center text-success fw-bold">Bonjour {{app.user.firstname}} </p>
+
+		<p class="fs-5 fw-bold">Total : {{app.user.nfts|length}} NFTs</p>
 
 		<div class="row">
 			{% for nft in app.user.nfts %}
-				<div class="card mx-3" style="width: 24rem;">
-					<img src="{{asset ('/uploads/nft/' ~ nft.image)}}" height="450" class="card-img-top" alt="{{nft.nom}}">
+				<div class="card mx-3 my-3 shadow p-3 mb-5 bg-body rounded" style="width: 24rem;">
+					<img src="{{asset ('/uploads/nft/' ~ nft.image)}}" height="450" class="card-img-top mt-3" alt="{{nft.nom}}">
 					<div class="card-body">
 						<h5 class="card-title">{{nft.nom}}</h5>
 						<ul>

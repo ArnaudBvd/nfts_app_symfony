@@ -16,22 +16,42 @@
 			padding: 2px 6px;
 		}
 	</style>
-
 	<div class="container">
-		<h1 class="my-5 text-center">Tous les NFTs ! ✅</h1>
+		<h1 class="my-5 text-center">Tous les NFTs !</h1>
 
-		
-		<ul>
-			<li>Your controller at
-				<code>
-					<a href="{{ 'C:/wamp64/www/nfts_app_symfony/src/Controller/NftController.php'|file_link(0) }}">src/Controller/NftController.php</a>
-				</code>
-			</li>
-			<li>Your template at
-				<code>
-					<a href="{{ 'C:/wamp64/www/nfts_app_symfony/templates/nft/allnfts.html.twig'|file_link(0) }}">templates/nft/index.html.twig</a>
-				</code>
-			</li>
-		</ul>
-	</div>
-{% endblock %}
+		<p class="fs-5 fw-bold">Total : {{nfts|length}} NFTs</p>
+
+		<div class="container">
+
+			<div class="row">
+				{% for nft in nfts %}
+					<div class="card mx-3 my-3 shadow p-3 mb-5 bg-body rounded" style="width: 24rem;">
+						<img src="{{asset ('/uploads/nft/' ~ nft.image)}}" height="450" class="card-img-top mt-3" alt="{{nft.nom}}">
+						<div class="card-body">
+							<h5 class="card-title">{{nft.nom}}</h5>
+							<ul>
+								<li>Nombre de quantité disponible :
+									{{nft.quantity}}</li>
+								<li>Valeur :
+									{{nft.valeur}}
+									ETH</li>
+							</ul>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<ul>
+				<li>Your controller at
+					<code>
+						<a href="{{ 'C:/wamp64/www/nfts_app_symfony/src/Controller/NftController.php'|file_link(0) }}">src/Controller/NftController.php</a>
+					</code>
+				</li>
+				<li>Your template at
+					<code>
+						<a href="{{ 'C:/wamp64/www/nfts_app_symfony/templates/nft/allnfts.html.twig'|file_link(0) }}">templates/nft/index.html.twig</a>
+					</code>
+				</li>
+			</ul>
+		</div>
+	{% endblock %}
