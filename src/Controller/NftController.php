@@ -6,6 +6,7 @@ use App\Entity\Nft;
 use App\Form\NftType;
 use App\Repository\NftRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -15,14 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+
 class NftController extends AbstractController
 {
     #[Route('/nft', name: 'app_nft')]
-    public function index(NftRepository $nftRepository): Response
+    public function index(NftRepository $nftRepository, PaginatorInterface $paginator): Response
     {
         $nfts = $nftRepository->findAll();
         return $this->render('nft/allnfts.html.twig', [
-            'nfts' => $nfts,
+            'nfts' => $nfts
         ]);
     }
 
