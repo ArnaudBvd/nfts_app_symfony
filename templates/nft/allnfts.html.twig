@@ -23,8 +23,8 @@
 			<p class="fs-5 fw-bold">Total : {{nfts.getTotalItemCount}} NFTs</p>
 		</div>
 	
+		{% if not nfts.items is same as ([]) %}
 		<div class="container">
-
 			<div class="row mb-4">
 				{% for nft in nfts %}
 					<div class="card mx-3 my-3 shadow p-3 mb-5 bg-body rounded" style="width: 25rem;">
@@ -47,5 +47,8 @@
 				{{knp_pagination_render(nfts)}}
 			</div>			
 		</div>
+		{% else %}
+		<p class="text-center fs-4 text-danger">Il n'y a pas de NFT...</p>
+		{% endif %}
 
 	{% endblock %}
