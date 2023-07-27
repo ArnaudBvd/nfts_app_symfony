@@ -19,11 +19,13 @@
 	<div class="container">
 		<h1 class="my-5 text-center">Tous les NFTs !</h1>
 
-		<p class="fs-5 fw-bold">Total : {{nfts|length}} NFTs</p>
-
+		<div class="count">
+			<p class="fs-5 fw-bold">Total : {{nfts.getTotalItemCount}} NFTs</p>
+		</div>
+	
 		<div class="container">
 
-			<div class="row">
+			<div class="row mb-4">
 				{% for nft in nfts %}
 					<div class="card mx-3 my-3 shadow p-3 mb-5 bg-body rounded" style="width: 25rem;">
 						<img src="{{asset ('/uploads/nft/' ~ nft.image)}}" height="450" class="card-img-top mt-3" alt="{{nft.nom}}">
@@ -41,17 +43,9 @@
 				{% endfor %}
 			</div>
 
-			<ul>
-				<li>Your controller at
-					<code>
-						<a href="{{ 'C:/wamp64/www/nfts_app_symfony/src/Controller/NftController.php'|file_link(0) }}">src/Controller/NftController.php</a>
-					</code>
-				</li>
-				<li>Your template at
-					<code>
-						<a href="{{ 'C:/wamp64/www/nfts_app_symfony/templates/nft/allnfts.html.twig'|file_link(0) }}">templates/nft/index.html.twig</a>
-					</code>
-				</li>
-			</ul>
+			<div class="navigation d-flex justify-content-center mb-4 text-success">
+				{{knp_pagination_render(nfts)}}
+			</div>			
 		</div>
+
 	{% endblock %}

@@ -20,9 +20,14 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class NftController extends AbstractController
 {
     #[Route('/nft', name: 'app_nft')]
-    public function index(NftRepository $nftRepository, PaginatorInterface $paginator): Response
+    public function index(NftRepository $nftRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $nfts = $nftRepository->findAll();
+        // $nfts = $nftRepository->findAll();
+            $nfts = $paginator->paginate(
+            $nftRepository->findAll(),
+            $request->query->getInt('page', 1), 6
+        );
+
         return $this->render('nft/allnfts.html.twig', [
             'nfts' => $nfts
         ]);

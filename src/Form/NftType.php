@@ -53,6 +53,7 @@ class NftType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Nft::class,
+            'csrf_protection'=> true 
         ]);
     }
 }
